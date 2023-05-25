@@ -2,11 +2,13 @@ public class Operaciones
 {
     public int Suma(int a, int b)
     {
+        return a + b;
         throw new NotImplementedException("No Implementado");
     }
 
     public int Resta(int a, int b)
     {
+        return a - b;
         throw new NotImplementedException("No Implementado");
     }
 
