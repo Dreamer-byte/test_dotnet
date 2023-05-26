@@ -1,14 +1,13 @@
 public class Operaciones
 {
+    #region Noel
     public int Suma(int a, int b)
     {
-        return a + b;
         throw new NotImplementedException("No Implementado");
     }
-
+    #endregion
     public int Resta(int a, int b)
     {
-        return a - b;
         throw new NotImplementedException("No Implementado");
     }
 
