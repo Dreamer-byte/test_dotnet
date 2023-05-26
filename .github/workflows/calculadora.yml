@@ -1,0 +1,27 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+#Cuando queremos que se ejecute: cuando alla in push cuando se va a activar
+on:
+  push:
+    branches: [ "main" ] #en que ram
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest #sobre que erquipo se va a correr estos pasos.
+#Cada uno de los guines definen un paso.
+    steps:
+    - uses: actions/checkout@v3 # este accion automatiza el hecho de poner las credenciales en el equipo, clonar el repositorio.
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3 #accion que instala .NET los use lo que hacen es traerse otras acciones.
+      with:
+        dotnet-version: 6.0.x # se especifica la version de .NET
+    - name: Restore dependencies
+      run: dotnet restore # Le hemos quitado la carpeta bin, y obj, la capeta bin tiene cosas que se crean en el momento de crear la carpeta, entonces lo que hace es restaurar el proyecto
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
